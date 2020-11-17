@@ -1,2 +1,2 @@
-# Jetson Configuration
+# Jetson Configurations
 
