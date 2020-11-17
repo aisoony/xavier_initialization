@@ -43,7 +43,7 @@
 
 ## 2. Mount External Storages
 ### 2.1. Disk Properties
-* __Must__ set "ext4" partition if you want use docker images!
+* __Must__ set "ext4" partition if you want use docker images! (Other partitions may not support overlay.)
 * Check disk name: sudo fdisk -l
 * Check UUID and partition type: sudo blkid
 
@@ -62,7 +62,7 @@
 * Set mount directory: mkdir -p __"your docker path"__
 * Add "data-root" option in "/lib/systemd/system/docker.service" file
     * ExecStart=/usr/bin/dockerd -H fd:// --containerd=/run/containerd/containerd.sock --data-root=__"your docker path"__
-    * In my case, 
+    * In my case, home directory is located at "/home/nvidia"
         * mkdir -p ~/mount/containerd/
         * sudo su
         * sed -i '/ExecStart=/usr/bin/dockerd -H fd:// --containerd=/run/containerd/containerd.sock/ c ExecStart=/usr/bin/dockerd -H fd:// --containerd=/run/containerd/containerd.sock --data-root=/home/nvidia/mount/containerd/' /lib/systemd/system/docker.service
@@ -73,5 +73,19 @@
     * sudo service docker status 
 
 ### 3.2. Run Images and Containers
-* 
+* Deep Learning
+    * https://ngc.nvidia.com/catalog/containers/nvidia:l4t-ml
+    * docker pull nvcr.io/nvidia/l4t-ml:r32.4.3-py3
+    * 
+
+* DLI tutorial for Jetson Nano
+    * https://ngc.nvidia.com/catalog/containers/nvidia:dli:dli-nano-ai
+    * docker pull nvcr.io/nvidia/dli/dli-nano-ai:v2.0.1-r32.4.4
+    * 
+
+* DLI tutorial for Jetbot
+    * https://jetbot.org/master/
+    * https://github.com/NVIDIA-AI-IOT/jetbot
+    * Image build required from Dockerfile
+    
 
