@@ -33,21 +33,16 @@
     * sudo systemctl enable __SSS__
     * sudo systemctl start __SSS__
     * sudo systemctl status __SSS__
-    
-
 
 ## 2. Mount External Storages
 ### 2.1. Disk Configuration
-* Partition: 
-    * Must set ext4 if you want use docker images!
-    * Check disk name: sudo fdisk -l
-    * Check UUID and partition type: sudo blkid
-    
-* Add disk properties to /etc/fstab
-    * echo -e " UUID=__your UUID (only number and alphabet)__ __mount_path__ ext4 defaults 0 0" | sudo tee -a /etc/fstab > /dev/null
+* Must set ext4 if you want use docker images!
+* Check disk name: sudo fdisk -l
+* Check UUID and partition type: sudo blkid
 
 ### 2.2. Permanent Mount
-
+* Add disk properties to /etc/fstab
+* echo -e " UUID=__"your UUID"__ __"mount path"__ ext4 defaults 0 0" | sudo tee -a /etc/fstab > /dev/null
 
 ## 3. Modifications for Docker Environments
 
