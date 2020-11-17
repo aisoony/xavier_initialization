@@ -1,7 +1,13 @@
-# xavier_initialization
+# Xavier Initialization
 
-## 1. Jetpack Installation
+## 1. Software Installation
+### 1.1. Jetpack
+### 1.2. APT packages
+### 1.3. Performance Monitoring
 
-## 2. Mount External Storage
+## 2. Mount External Storages
+### 2.1. Disk Configuration
+### 2.2. 
+
 
 ## 3. Modifications for Docker Images
