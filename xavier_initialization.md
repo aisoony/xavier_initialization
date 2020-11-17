@@ -1,5 +1,6 @@
 # Initial Configurations for Jetson Xavier AGX
-
+* Jetson Xavier AGX 초기 설정방법 정리
+* 따라하다 실패해도 책임 안짐
 
 ## 1. Software Installation
 ### 1.1. Jetpack
@@ -37,7 +38,15 @@
 
 ## 2. Mount External Storages
 ### 2.1. Disk Configuration
-### 2.2. 
+* Partition: 
+    * Must set ext4 if you want use docker images!
+    * Check disk name: sudo fdisk -l
+    * Check UUID and partition type: sudo blkid
+    
+* Add disk properties to /etc/fstab
+    * echo -e " UUID=__your UUID (only number and alphabet)__ __mount_path__ ext4 defaults 0 0" | sudo tee -a /etc/fstab > /dev/null
+
+### 2.2. Permanent Mount
 
 
 ## 3. Modifications for Docker Environments
