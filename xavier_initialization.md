@@ -51,15 +51,21 @@
 * Make a directory for disk mount: mkdir -p __"mount path"__
 * Add disk properties to /etc/fstab
 * echo -e " UUID=__"your UUID"__ __"mount path"__ ext4 defaults 0 0" | sudo tee -a /etc/fstab > /dev/null
+* sudo mount -a
 
 
 
 ## 3. Modifications for Docker Environments
-* sudo usermod -aG docker $USER, Reboot Required
-* mkdir -p __"your docker path"__
+* Check docker version: sudo docker --version (Currently, 19.03)
+* Use docker command without sudo: sudo usermod -aG docker $USER, Reboot Required
+* Set mount directory: mkdir -p __"your docker path"__
 * Add "data-root" option in "/lib/systemd/system/docker.service" file
     * ExecStart=/usr/bin/dockerd -H fd:// --containerd=/run/containerd/containerd.sock --data-root=__"your docker path"__
     * In my case, sed -i '/ExecStart=/usr/bin/dockerd -H fd:// --containerd=/run/containerd/containerd.sock/ c ExecStart=/usr/bin/dockerd -H fd:// --containerd=/run/containerd/containerd.sock --data-root=/home/nvidia/mount/containerd/' /lib/systemd/system/docker.service
+    * sudo systemctl daemon-reload 
+    * sudo service docker stop 
+    * sudo service docker start 
+    * sudo service docker status 
 
 
 
